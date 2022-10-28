@@ -1,0 +1,143 @@
+APPLIED COMPONANTS
+SQL
+PRACTICAL NO-3
+date:
+ROLL_NO : 407
+
+
+Q1
+i)
+SQL> select * from emp1 where edept = 'hr';
+
+       ENO ENAME      EDOJ            ESAL EDESIG               EDEPT                  BONUS_NO
+---------- ---------- --------- ---------- -------------------- -------------------- ----------
+         6 vishal     01-JUN-02        150 manager              hr
+
+ii)
+SQL> select * from emp1 order by edept asc,edesig desc;
+
+       ENO ENAME      EDOJ            ESAL EDESIG               EDEPT                  BONUS_NO
+---------- ---------- --------- ---------- -------------------- -------------------- ----------
+         5 maya       19-NOV-02      150.3 accountant           finance
+         6 vishal     01-JUN-02        150 manager              hr
+         4 shalu      10-SEP-01       50.1 accountant           marketing
+         1 sahil      14-JAN-02        150 sr prog              programmer
+         3 anjali     20-DEC-02     100.23 sr prog              programmer
+         2 arpita     23-FEB-02        150 softprog             programmer
+
+iii)
+SQL> select eno as "employee number",ename as "employee name",edoj as "employee date of joining", edept as "employee department" from emp1;
+
+employee number employee n employee  employee department
+--------------- ---------- --------- --------------------
+              1 sahil      14-JAN-02 programmer
+              2 arpita     23-FEB-02 programmer
+              3 anjali     20-DEC-02 programmer
+              4 shalu      10-SEP-01 marketing
+              5 maya       19-NOV-02 finance
+              6 vishal     01-JUN-02 hr
+
+6 rows selected.
+
+iv)
+
+SQL> select * from emp1 where esal  between 30000 and 5000;
+
+no rows selected
+
+SQL> select * from emp1 where esal  between 10 and 1000 ;
+
+       ENO ENAME      EDOJ            ESAL EDESIG               EDEPT                  BONUS_NO
+---------- ---------- --------- ---------- -------------------- -------------------- ----------
+         1 sahil      14-JAN-02        150 sr prog              programmer
+         2 arpita     23-FEB-02        150 softprog             programmer
+         3 anjali     20-DEC-02     100.23 sr prog              programmer
+         4 shalu      10-SEP-01       50.1 accountant           marketing
+         5 maya       19-NOV-02      150.3 accountant           finance
+         6 vishal     01-JUN-02        150 manager              hr
+
+6 rows selected.
+
+v) 
+
+SQL> select * from emp1 where ename like '_h%';
+
+       ENO ENAME      EDOJ            ESAL EDESIG               EDEPT                  BONUS_NO
+---------- ---------- --------- ---------- -------------------- -------------------- ----------
+         4 shalu      10-SEP-01       50.1 accountant           marketing
+
+vi)
+SQL> select * from emp1 where edept = 'hr' and edesig = 'sr prog';
+
+no rows selected
+
+SQL> select * from emp1 where edept = 'programmer' and edesig = 'sr prog';
+
+       ENO ENAME      EDOJ            ESAL EDESIG               EDEPT                  BONUS_NO
+---------- ---------- --------- ---------- -------------------- -------------------- ----------
+         1 sahil      14-JAN-02        150 sr prog              programmer
+         3 anjali     20-DEC-02     100.23 sr prog              programmer
+
+vii)
+
+      ENO ENAME      EDOJ            ESAL EDESIG               EDEPT                  BONUS_NO
+---------- ---------- --------- ---------- -------------------- -------------------- ----------
+         1 sahil      14-JAN-02        150 sr prog              programmer
+         3 anjali     20-DEC-02     100.23 sr prog              programmer
+         4 shalu      10-SEP-01       50.1 accountant           marketing
+         5 maya       19-NOV-02      150.3 accountant           finance
+
+viii)
+
+SQL> select * from emp1 where edoj<='28-mar-2003';
+
+       ENO ENAME      EDOJ            ESAL EDESIG               EDEPT                  BONUS_NO
+---------- ---------- --------- ---------- -------------------- -------------------- ----------
+         1 sahil      14-JAN-02        150 sr prog              programmer
+         2 arpita     23-FEB-02        150 softprog             programmer
+         3 anjali     20-DEC-02     100.23 sr prog              programmer
+         4 shalu      10-SEP-01       50.1 accountant           marketing
+         5 maya       19-NOV-02      150.3 accountant           finance
+         6 vishal     01-JUN-02        150 manager              hr
+
+6 rows selected.
+
+Q2)
+i)
+
+SQL> delete from emp1 where ename like '_____';
+
+2 rows deleted.
+SQL> select * from emp1;
+
+       ENO ENAME      EDOJ            ESAL EDESIG               EDEPT                  BONUS_NO
+---------- ---------- --------- ---------- -------------------- -------------------- ----------
+         2 arpita     23-FEB-02        150 softprog             programmer
+         3 anjali     20-DEC-02     100.23 sr prog              programmer
+         5 maya       19-NOV-02      150.3 accountant           finance
+         6 vishal     01-JUN-02        150 manager              hr
+
+
+ii)
+
+SQL> delete from emp1 where esal<=20000;
+
+4 rows deleted.
+
+iii)
+SQL> delete from emp1 where ename is null;
+
+0 rows deleted.
+
+iv)
+SQL> delete from emp1 where eno=1009;
+
+0 rows deleted.
+
+v)
+
+SQL> delete from emp1 where edesig='manager';
+
+0 rows deleted.
+
+

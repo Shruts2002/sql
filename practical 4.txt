@@ -1,0 +1,374 @@
+prac 4
+
+
+SQL> select * from emp2;
+
+       ENO ENAME                EDATE           ESAL EDESIG
+---------- -------------------- --------- ---------- --------------------
+EDEPT                     BONUS
+-------------------- ----------
+        12 nayan                12-JAN-02      45666 sr prog
+hr
+
+        45 sahil                15-JUN-03      15000 manager
+
+
+        48 dipak                15-JUN-03     154425 soft prog
+
+
+
+       ENO ENAME                EDATE           ESAL EDESIG
+---------- -------------------- --------- ---------- --------------------
+EDEPT                     BONUS
+-------------------- ----------
+        72 rakesh               12-JUL-03      46852 accountant
+
+
+        35 sujal                28-SEP-04      78954 accountant
+
+
+        46 suraj                13-FEB-05      65442 manager
+hr
+
+
+       ENO ENAME                EDATE           ESAL EDESIG
+---------- -------------------- --------- ---------- --------------------
+EDEPT                     BONUS
+-------------------- ----------
+        23 pravin               09-SEP-06      85525
+marketing
+
+        99 arpita               08-JAN-03      45888
+hr
+
+
+8 rows selected.
+
+SQL> select sum(esal) from emp2;
+
+ SUM(ESAL)
+----------
+    537752
+
+SQL> select sum(esal)as "Total salary", sum(esal)/14 as "Average salary" from emp2;
+
+Total salary Average salary
+------------ --------------
+      537752     38410.8571
+
+SQL> select sum(esal)as "Total salary", avg(esal) as "Average salary" from emp2;
+
+Total salary Average salary
+------------ --------------
+      537752          67219
+
+SQL> select sum(esal) as "Manager salary" from emp2 where edesig='manager';
+
+Manager salary
+--------------
+         80442
+
+SQL> select count(*)from emp2;
+
+  COUNT(*)
+----------
+         8
+
+SQL> select count(*)from emp2 where edesig='salesman';
+
+  COUNT(*)
+----------
+         0
+
+
+SQL> select distinct(edesig)from emp2;
+
+EDESIG
+--------------------
+sr prog
+manager
+soft prog
+accountant
+
+
+SQL> select count (distinct edesig) from emp2;
+
+COUNT(DISTINCTEDESIG)
+---------------------
+                    4
+
+SQL> select max(esal) as "maximum salary" from emp2;
+
+maximum salary
+--------------
+        154425
+
+SQL> select min(esal) as "minimum salary" from emp2;
+
+minimum salary
+--------------
+         15000
+
+SQL> select max(esal) as "maximum salary" from emp2 where edesig ='manager';
+
+maximum salary
+--------------
+         65442
+
+SQL> select ABS(-5) from dual;
+
+   ABS(-5)
+----------
+         5
+
+SQL> select exp(10) from dual;
+
+   EXP(10)
+----------
+22026.4658
+
+SQL> select log(2,1) from dual;
+
+  LOG(2,1)
+----------
+         0
+
+SQL> select sqrt(225)from dual;
+
+ SQRT(225)
+----------
+        15
+
+
+SQL> select sqrt(esal)from emp2;
+
+SQRT(ESAL)
+----------
+213.696046
+122.474487
+392.969464
+216.453228
+280.987544
+ 255.81634
+292.446576
+214.214845
+
+8 rows selected.
+
+
+SQL> select power (2,3), power (3,2) from dual;
+
+POWER(2,3) POWER(3,2)
+---------- ----------
+         8          9
+
+
+SQL> select power(esal,2) from emp2;
+
+POWER(ESAL,2)
+-------------
+   2085383556
+    225000000
+   2.3847E+10
+   2195109904
+   6233734116
+   4282655364
+   7314525625
+   2105708544
+
+8 rows selected.
+
+
+SQL> select sign(esal) from emp2;
+
+SIGN(ESAL)
+----------
+         1
+         1
+         1
+         1
+         1
+         1
+         1
+         1
+
+8 rows selected.
+
+
+SQL> select sign(-20) from dual;
+
+ SIGN(-20)
+----------
+        -1
+
+SQL> select round(10.234,1)from dual;
+
+ROUND(10.234,1)
+---------------
+           10.2
+
+SQL> select round(10.234,5)from dual;
+
+ROUND(10.234,5)
+---------------
+         10.234
+
+
+SQL> select round(10.234,-1)from dual;
+
+ROUND(10.234,-1)
+----------------
+              10
+
+SQL> select round(10.234,-2)from dual;
+
+ROUND(10.234,-2)
+----------------
+               0
+
+SQL> select round(60.234,-1)from dual;
+
+ROUND(60.234,-1)
+----------------
+              60
+
+SQL> select round(60.234,-3)from dual;
+
+ROUND(60.234,-3)
+----------------
+               0
+
+
+
+SQL> select mod(23,3)from dual;
+
+ MOD(23,3)
+----------
+         2
+
+SQL> select mod(-23,3)from dual;
+
+MOD(-23,3)
+----------
+        -2
+
+SQL> select mod(23,-3)from dual;
+
+MOD(23,-3)
+----------
+         2
+
+
+SQL> select mod(-23,-3)from dual;
+
+MOD(-23,-3)
+-----------
+         -2
+
+SQL> select lower('Guru Nanak Khaksa COLLege')from dual;
+
+LOWER('GURUNANAKKHAKSACOL
+-------------------------
+guru nanak khaksa college
+
+
+
+
+SQL> select Upper('Guru Nanak Khaksa COLLege')from dual;
+
+UPPER('GURUNANAKKHAKSACOL
+-------------------------
+GURU NANAK KHAKSA COLLEGE
+
+
+
+
+SQL> select * from emp2 where edesig ='manager' or edesig=Upper('manager');
+
+       ENO ENAME                EDATE           ESAL EDESIG
+---------- -------------------- --------- ---------- --------------------
+EDEPT                     BONUS
+-------------------- ----------
+        45 sahil                15-JUN-03      15000 manager
+
+
+        46 suraj                13-FEB-05      65442 manager
+hr
+
+
+
+
+SQL> select eno,ltrim(ename) from emp2;
+
+       ENO LTRIM(ENAME)
+---------- --------------------
+        12 nayan
+        45 sahil
+        48 dipak
+        72 rakesh
+        35 sujal
+        46 suraj
+        23 pravin
+        99 arpita
+
+8 rows selected.
+
+
+SQL> select Ltrim('Khalsa College','Kh')from dual;
+
+LTRIM('KHALS
+------------
+alsa College
+
+
+
+SQL> select rtrim(ename),eno from emp2;
+
+RTRIM(ENAME)                ENO
+-------------------- ----------
+nayan                        12
+sahil                        45
+dipak                        48
+rakesh                       72
+sujal                        35
+suraj                        46
+pravin                       23
+arpita                       99
+
+8 rows selected.
+
+
+SQL> select rtrim ('Khalsa college','ege')from dual;
+
+RTRIM('KHAL
+-----------
+Khalsa coll
+
+
+SQL> select trim(both 'e' from 'egealsa college') from dual;
+
+TRIM(BOTH'E'F
+-------------
+gealsa colleg
+
+
+SQL> select '   egalsa college  ', trim('     egalsa college    ')from dual;
+
+'EGALSACOLLEGE'  TRIM('EGALSACOL
+---------------- ---------------
+        egalsa college   egalsa college
+
+
+
+SQL> select trim(leading ' ' from ' egalsa college ')from dual;
+
+TRIM(LEADING''F
+---------------
+egalsa college
+
+
+SQL> select trim(trailing ' ' from ' egalsa college ')from dual;
+
+TRIM(TRAILING''
+---------------
+ egalsa college

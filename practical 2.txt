@@ -1,0 +1,226 @@
+Prac-2
+date:10-08-2022
+Q1)i)
+SQL> create table book(bid number(5),bname varchar2(20));
+
+Table created.
+
+ii)
+SQL> insert into book values(&bid,'&bname');
+Enter value for bid: 12
+Enter value for bname: big bang
+old   1: insert into book values(&bid,'&bname')
+new   1: insert into book values(12,'big bang')
+
+1 row created.
+
+SQL> insert into book values(&bid,'&bname');
+Enter value for bid: 13
+Enter value for bname: atomic habits
+old   1: insert into book values(&bid,'&bname')
+new   1: insert into book values(13,'atomic habits')
+
+1 row created.
+
+iii)
+SQL> alter table book add constraint prikey primary key(bid);
+
+Table altered.
+
+iv)
+SQL> alter table book modify bname not null;
+
+Table altered.
+
+v)
+SQL> alter table book add bpub varchar2(20);
+
+Table altered.
+
+vi)
+
+SQL> alter table book modify bname varchar2(40);
+
+Table altered.
+
+vii)
+
+SQL> alter table book add bprice number(5,2);
+
+Table altered.
+---
+
+viii)
+
+SQL> alter table book add issn number(10);
+
+Table altered.
+
+SQL> alter table book add constraint uni_qw unique (issn);
+
+Table altered.
+
+ix)
+SQL> insert into book values(&bid,'&bname','&bpub',&bprice,&issn);
+Enter value for bid: 1
+Enter value for bname: the theory of everythng
+Enter value for bpub: usa media
+Enter value for bprice: 500
+Enter value for issn: 2334
+old   1: insert into book values(&bid,'&bname','&bpub',&bprice,&issn)
+new   1: insert into book values(1,'the theory of everythng','usa media',500,2334)
+
+1 row created.
+
+SQL> /
+Enter value for bid: 2
+Enter value for bname: binary sys
+Enter value for bpub: media
+Enter value for bprice: 600
+Enter value for issn: 8683
+old   1: insert into book values(&bid,'&bname','&bpub',&bprice,&issn)
+new   1: insert into book values(2,'binary sys','media',600,8683)
+
+1 row created.
+
+SQL> /
+Enter value for bid: 3
+Enter value for bname: a brif answer to the big q
+Enter value for bpub: england pub
+Enter value for bprice: 130
+Enter value for issn: 8799
+old   1: insert into book values(&bid,'&bname','&bpub',&bprice,&issn)
+new   1: insert into book values(3,'a brif answer to the big q','england pub',130,8799)
+
+1 row created.
+
+SQL> select * from book;
+
+       BID BNAME                                    BPUB
+---------- ---------------------------------------- --------------------
+    BPRICE       ISSN
+---------- ----------
+        12 big bang
+
+
+        13 atomic habits
+
+
+         1 the theory of everythng                  usa media
+       500       2334
+
+
+       BID BNAME                                    BPUB
+---------- ---------------------------------------- --------------------
+    BPRICE       ISSN
+---------- ----------
+         2 binary sys                               media
+       600       8683
+
+         3 a brif answer to the big q               england pub
+       130       8799
+
+Q2)
+i)
+
+SQL> create table emp1(eno number(5) primary key,ename varchar2(10) not null, edoj date check(edoj<='17-aug-2022'),esal number(10,2) check(esal>=0),edesig varchar2(20) default 'soft prog' check(edesig in ('softprog','sr prog','accountant','clerk','manager')),edept varchar2(20) default 'programmer' check(edept in ('programmer','hr','marketing','finance')));
+
+Table created.
+
+SQL> desc emp1
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ENO                                       NOT NULL NUMBER(5)
+ ENAME                                     NOT NULL VARCHAR2(10)
+ EDOJ                                               DATE
+ ESAL                                               NUMBER(10,2)
+ EDESIG                                             VARCHAR2(20)
+ EDEPT                                              VARCHAR2(20)
+
+ii)
+
+SQL> insert into emp1 values(&eno,'&ename','&edoj',&esal,'&edesig','&edept');
+Enter value for eno: 0001
+Enter value for ename: sahil
+Enter value for edoj: 14-jan-2002
+Enter value for esal: 150
+Enter value for edesig: sr prog
+Enter value for edept: programmer
+old   1: insert into emp1 values(&eno,'&ename','&edoj',&esal,'&edesig','&edept')
+new   1: insert into emp1 values(0001,'sahil','14-jan-2002',150,'sr prog','programmer')
+
+1 row created.
+
+SQL> /
+Enter value for eno: 0002
+Enter value for ename: arpita
+Enter value for edoj: 23-feb-2002
+Enter value for esal: 150
+Enter value for edesig: softprog
+Enter value for edept: programmer
+old   1: insert into emp1 values(&eno,'&ename','&edoj',&esal,'&edesig','&edept')
+new   1: insert into emp1 values(0002,'arpita','23-feb-2002',150,'softprog','programmer')
+
+1 row created.
+
+SQL> /
+Enter value for eno: 0003
+Enter value for ename: anjali
+Enter value for edoj: 20-dec-2002
+Enter value for esal: 100.23
+Enter value for edesig: sr prog
+Enter value for edept: programmer
+old   1: insert into emp1 values(&eno,'&ename','&edoj',&esal,'&edesig','&edept')
+new   1: insert into emp1 values(0003,'anjali','20-dec-2002',100.23,'sr prog','programmer')
+
+1 row created.
+
+SQL> /
+Enter value for eno: 0004
+Enter value for ename: shalu
+Enter value for edoj: 10-sep-2001
+Enter value for esal: 50.10
+Enter value for edesig: accountant
+Enter value for edept: marketing
+old   1: insert into emp1 values(&eno,'&ename','&edoj',&esal,'&edesig','&edept')
+new   1: insert into emp1 values(0004,'shalu','10-sep-2001',50.10,'accountant','marketing')
+
+1 row created.
+
+SQL> /
+Enter value for eno: 0005
+Enter value for ename: maya
+Enter value for edoj: 19-nov-2002
+Enter value for esal: 150.30
+Enter value for edesig: accountant
+Enter value for edept: finance
+old   1: insert into emp1 values(&eno,'&ename','&edoj',&esal,'&edesig','&edept')
+new   1: insert into emp1 values(0005,'maya','19-nov-2002',150.30,'accountant','finance')
+
+1 row created.
+
+SQL> /
+Enter value for eno: 0006
+Enter value for ename: vishal
+Enter value for edoj: 01-jun-2002
+Enter value for esal: 150
+Enter value for edesig: manager
+Enter value for edept: hr
+old   1: insert into emp1 values(&eno,'&ename','&edoj',&esal,'&edesig','&edept')
+new   1: insert into emp1 values(0006,'vishal','01-jun-2002',150,'manager','hr')
+
+1 row created.
+
+iii)
+SQL> alter table emp1 add bonus_no number(10,2);
+
+Table altered.
+
+SQL> update emp1 set bonus_no=esal*0.05;
+
+6 rows updated.
+
+SQL> update emp1 set bonus_no=esal+1000 where edept = 'programmer';
+
+3 rows updated.
+

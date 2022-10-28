@@ -1,16 +1,11 @@
-practical 01
+APPLIED COMPONANTS
+SQL
+PRACTICAL NO-1
+date:07-07-2022
+ROLL_NO : 407
 
+Q.A
 
-
-Enter user-name: system
-Enter password:
-Last Successful login time: Sun Sep 18 2022 00:54:40 +05:30
-
-Connected to:
-Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
-Version 21.3.0.0.0
-
-/////////////// Q.a
 SQL> create table invent(ino number(10)unique,iname varchar2(10)not null,opstk number(10) default 0,mprice number(10,2),dos date);
 
 Table created.
@@ -58,7 +53,6 @@ SQL> insert into invent values(123,'nayan ',4000,100000,'12-feb-2021','nano');
 1 row created.
 
 
-
 SQL> insert into invent values(12,'shravan ',4,100,'15-jan-2020','joy');
 
 1 row created.
@@ -71,7 +65,7 @@ SQL> select * from invent;
        123 nayan                           4000     100000 12-FEB-21 nano
         12 shravan                            4        100 15-JAN-20 joy
 
-////////////Q.b
+Q.B
 
 SQL> create table donation(dno number(10)primary key, dname varchar2(20),damt number(20),dt date not null);
 
@@ -102,7 +96,7 @@ SQL> select * from donation;
          2 dipak                        10 11-OCT-90
 
 
-////////// Q.c
+Q.C
 
 
 SQL> create table hospital(pt_no number(10),pname varchar2(15),page number(3),doc_name varchar(15),t_o_p varchar2(15),charges number(11,5));
@@ -131,7 +125,7 @@ SQL> select * from hospital;
        203 barry                   76 dr.ravindram    ENT               54.23352
        566 joy                     95 dr.satyajit     coma              6125.233
 
-/////////////// Q.d
+Q.D
 
 
 SQL> create table course(cr_id number(3) primary key,cname varchar2(15),sem number(2) not null,year date);
@@ -153,7 +147,7 @@ SQL> select * from course;
          1 arpita                   5 15-MAR-22
          2 anjali                   5 15-MAR-22
 
-//////////// Q.e
+Q.E
 
 SQL> create table emp(eid char(5),ename varchar2(15),edept_no number(3),esalary number(8,2));
 
@@ -188,8 +182,8 @@ SQL> desc emp;
  EDESIG                                             VARCHAR2(20)
  CLERK                                              VARCHAR2(20)
 
-/////////////// Q.f
-SQL> create table account(acc_no number(20)primary key,adhar_no varchar2(10) unique, type varchar2(10) default 'saving',balance number(7,2)  );
+Q.F
+SQL> create table account(acc_no number(20)primary key,adhar_no varchar2(10) unique, type varchar2(10) default 'saving',balance number(7,2));
 
 Table created.
 
